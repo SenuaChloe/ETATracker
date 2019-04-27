@@ -26,7 +26,5 @@ for (comment, string_from, string_to) in coord_list:
 
 # Printing results
 for (comment, eta) in eta_list:
-    print("ETA to "+comment+": "+eta)
+    print("comment+": "+eta)
 
-# Sleep a bit
-#sys.sleep(1)
