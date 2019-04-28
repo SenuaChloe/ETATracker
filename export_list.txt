@@ -4,4 +4,4 @@ file_reader.py
 tracking_request.py
 tools.py
 install.sh
-input_example
+input.example

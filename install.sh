@@ -35,3 +35,8 @@ fi
 echo ">>> Installation in progres..."
 tar xzvf $TARFILE
 echo ">>> Done."
+
+
+echo ">>> Conversion of DOS files..."
+dos2unix *
+echo ">>> Done."

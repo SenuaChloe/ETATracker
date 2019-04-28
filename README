@@ -1,0 +1,27 @@
+
++----------------------+
+|---- Requirements ----|
+| python3              |
+| bash                 |
+| toilet               |
+| dos2unix             |
++----------------------+
+
+
++---------- How to use ----------+
+|                                |
+| Export                         |
+| 1. Modify the configure.sh     |
+|    file with your target       |
+| 2. source configure.sh         |
+| 3. Execute export.sh (either   |
+|    with no argument, or with   |
+|    custom target)              |
+|                                |
+| Install                        |
+| 1. Execute install.sh (with    |
+|    or without the clean option)|
+|                                |
+| Launch script                  |
+| 1. Launch eta_tracker.sh       |
++--------------------------------+

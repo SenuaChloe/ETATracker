@@ -7,7 +7,8 @@
 
 
 # constants
-EPOCH_DELTA_SEC=10 # in seconds
+DEBUG_MODE=0
+EPOCH_DELTA=60 # in seconds
 
 # globals
 BUFFER=`mktemp`
@@ -33,7 +34,8 @@ if [[ $# == 0 ]]
 then
     INPUT="input"
 elif [[ $# == 1 ]]
-    if [[ $1 == "-h" or $1 == "--help" ]]
+then
+    if [[ $1 == "-h" || $1 == "--help" ]]
     then
         usage
         exit 0
@@ -41,6 +43,7 @@ elif [[ $# == 1 ]]
         INPUT=$1
     fi
 elif [[ $# == 3 ]]
+then
     INPUT=`mktmp`
     TRAP_CMD=$TRAP'rm $INPUT;' INT
     echo "$1|$2|$3" > $INPUT
@@ -50,10 +53,10 @@ else
 fi
 
 #trap
-trap $TRAP_CMD INT
+trap "$TRAP_CMD" EXIT
 
 # checking the file
-ls $INPUT
+ls $INPUT > /dev/null 2>&1
 if [[ $? != 0 ]]
 then
     >&2 echo "Error : File $INPUT does not exist"
@@ -69,11 +72,16 @@ do
     TARGET_EPOCH=$((CURRENT_EPOCH+EPOCH_DELTA))
 
     # calling the main script
-    python3 eta_tracker.py $INPUT > $BUFFER
+    if [[ $DEBUG_MODE == 1 ]]
+    then
+        python3 eta_tracker.py $INPUT $DEBUG_MODE > log 2>&1
+    else
+        python3 eta_tracker.py $INPUT $DEBUG_MODE | toilet -t -f mono9 > $BUFFER
+    fi
 
     # flush the buffer
     clear
-    cat $BUFFER | figlet
+    cat $BUFFER
 
     # sleep
     CURRENT_EPOCH=`date +%s`
