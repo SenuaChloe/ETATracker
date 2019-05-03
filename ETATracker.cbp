@@ -31,8 +31,15 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="README" />
+		<Unit filename="configure.sh" />
 		<Unit filename="eta_tracker.py" />
+		<Unit filename="eta_tracker.sh" />
+		<Unit filename="export.sh" />
+		<Unit filename="export_list.txt" />
 		<Unit filename="file_reader.py" />
+		<Unit filename="input.example" />
+		<Unit filename="install.sh" />
 		<Unit filename="tools.py" />
 		<Unit filename="tracking_request.py" />
 		<Extensions>
