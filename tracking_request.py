@@ -11,13 +11,14 @@ def tracking_request(string_from, string_to, DEBUG_MODE=False):
     tools.dprint("from:"+string_from+" to:"+string_to, DEBUG_MODE)
 
     # Putting them into the calculator
-    directions_result = gmaps.directions(string_from, string_to)
+    now = datetime.now()
+    directions_result = gmaps.directions(string_from, string_to, mode="driving", departure_time=now)
 
     # dump
     tools.dump(directions_result, DEBUG_MODE)
 
-    duration = directions_result[0]["legs"][0]["duration"]["text"]
-    eta = directions_result[0]["legs"][0]["duration"]["value"]
+    duration = directions_result[0]["legs"][0]["duration_in_traffic"]["text"]
+    eta = directions_result[0]["legs"][0]["duration_in_traffic"]["value"]
 
     # debug trace
     tools.dprint(eta, DEBUG_MODE)
