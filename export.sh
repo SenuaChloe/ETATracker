@@ -3,6 +3,8 @@
 # Script to export to distant server
 # By default, exports to $TARGET
 
+source ./configure.sh
+
 if [[ $# -gt 1 ]]
 then
     echo "usage:    $0 target"
